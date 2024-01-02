@@ -35,7 +35,12 @@ const Login = () => {
         </div>
         <div className="form-control">
           <label htmlFor="password">Password</label>
-          <input type="password" name="password" required />
+          <input type={show ? "text" : "password"} name="password" required />
+          <p onClick={()=>{setShow(!show)}}>
+            {
+              show ? <span>Hide Password</span> : <span>Show Password</span>
+            }
+          </p>
         </div>
         <input className="btn-submit" type="submit" value="Login" />
       </form>
