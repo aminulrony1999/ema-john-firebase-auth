@@ -14,11 +14,11 @@ const Login = () => {
     signIn(email,password)
     .then(user => {
       console.log('User Sign In successfull');
+      form.reset();
     })
     .catch(error =>{
       setError(error.message);
     })
-    form.reset();
   }
   return (
     <div className="form-container">
@@ -26,11 +26,11 @@ const Login = () => {
       <form onSubmit={handleSignIn}>
         <div className="form-control">
           <label htmlFor="email">Email</label>
-          <input type="email" name="email" id="" required />
+          <input type="email" name="email" required />
         </div>
         <div className="form-control">
           <label htmlFor="password">Password</label>
-          <input type="password" name="password" id="" required />
+          <input type="password" name="password" required />
         </div>
         <input className="btn-submit" type="submit" value="Login" />
       </form>
