@@ -1,8 +1,11 @@
 import React, { useContext, useState } from "react";
 import "./SignUp.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 const SignUp = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/';
   const {createNewUser} = useContext(AuthContext);
   const [error,setError] = useState('');
     const handleSignUp = event => {
@@ -24,8 +27,7 @@ const SignUp = () => {
         }
         createNewUser(email,password)
         .then((result)=>{
-          console.log(result);
-          console.log('New user is created');
+          navigate(from,{replace : true});
         })
         .catch(error =>{
           setError(error.message);
